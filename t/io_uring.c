@@ -1055,6 +1055,8 @@ static void arm_sig_int(void)
 	/* Windows uses SIGBREAK as a quit signal from other applications */
 #ifdef WIN32
 	sigaction(SIGBREAK, &act, NULL);
+
+	sigaction(WM_CLOSE, &act, NULL);
 #endif
 }
 

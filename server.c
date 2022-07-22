@@ -2737,6 +2737,8 @@ static void set_sig_handlers(void)
 	/* Windows uses SIGBREAK as a quit signal from other applications */
 #ifdef WIN32
 	sigaction(SIGBREAK, &act, NULL);
+
+	sigaction(WM_CLOSE, &act, NULL);
 #endif
 }
 

@@ -667,6 +667,11 @@ static void client_signal_handler(void)
 	act.sa_handler = sig_int;
 	act.sa_flags = SA_RESTART;
 	sigaction(SIGBREAK, &act, NULL);
+
+	memset(&act, 0, sizeof(act));
+	act.sa_handler = sig_int;
+	act.sa_flags = SA_RESTART;
+	sigaction(WM_CLOSE, &act, NULL);
 #endif
 
 	memset(&act, 0, sizeof(act));
