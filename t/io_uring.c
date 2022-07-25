@@ -1056,7 +1056,7 @@ static void arm_sig_int(void)
 #ifdef WIN32
 	sigaction(SIGBREAK, &act, NULL);
 
-	sigaction(WM_CLOSE, &act, NULL);
+	sigaction(21, &act, NULL);
 #endif
 }
 

@@ -2738,7 +2738,7 @@ static void set_sig_handlers(void)
 #ifdef WIN32
 	sigaction(SIGBREAK, &act, NULL);
 
-	sigaction(WM_CLOSE, &act, NULL);
+	sigaction(21, &act, NULL);
 #endif
 }
 

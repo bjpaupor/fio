@@ -119,7 +119,7 @@ static void set_sig_handlers(void)
 	memset(&act, 0, sizeof(act));
 	act.sa_handler = sig_int;
 	act.sa_flags = SA_RESTART;
-	sigaction(WM_CLOSE, &act, NULL);
+	sigaction(21, &act, NULL);
 #endif
 
 	memset(&act, 0, sizeof(act));
