@@ -90,6 +90,19 @@ static void sig_int(int sig)
 	}
 }
 
+#ifdef WIN32
+static void sig_break(int sig)
+{
+	sig_int(sig);
+
+	/**
+	 * Windows terminates all job processes on SIGBREAK after the handler
+	 * returns, so give them time to wrap-up and give stats
+	 */
+	sleep(1);
+}
+#endif
+
 void sig_show_status(int sig)
 {
 	show_running_run_stats();
@@ -112,7 +125,7 @@ static void set_sig_handlers(void)
 /* Windows uses SIGBREAK as a quit signal from other applications */
 #ifdef WIN32
 	memset(&act, 0, sizeof(act));
-	act.sa_handler = sig_int;
+	act.sa_handler = sig_break;
 	act.sa_flags = SA_RESTART;
 	sigaction(SIGBREAK, &act, NULL);
 #endif
